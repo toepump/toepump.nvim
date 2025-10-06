@@ -115,7 +115,7 @@ vim.o.showmode = false
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.schedule(function()
-  vim.o.clipboard = 'unnamedplus'
+    vim.o.clipboard = 'unnamedplus'
 end)
 
 -- Enable break indent
@@ -205,6 +205,9 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- Custom Keybinds by Mikey
 vim.keymap.set('n', '<leader>t', ':NvimTreeToggle<cr>', { noremap = true, silent = true, desc = 'Toggle the file tree' })
+vim.keymap.set('n', '<leader>dd', function()
+    return vim.diagnostic.open_float()
+end, { noremap = true, silent = true, desc = 'Show diagnostic in popup' })
 
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
@@ -219,11 +222,11 @@ vim.keymap.set('n', '<leader>t', ':NvimTreeToggle<cr>', { noremap = true, silent
 --  Try it with `yap` in normal mode
 --  See `:help vim.hl.on_yank()`
 vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-  callback = function()
-    vim.hl.on_yank()
-  end,
+    desc = 'Highlight when yanking (copying) text',
+    group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+    callback = function()
+        vim.hl.on_yank()
+    end,
 })
 
 -- [[ Configure Lazy.nvim :: See mikey/lazy for full config and comments ]]
