@@ -14,11 +14,13 @@ for _, value in pairs(paths_to_check) do
     end
 end
 
--- check if server is already running in godot project path
-local is_server_running = vim.uv.fs_stat(godot_project_path .. '/server.pipe')
-print('is godot server running: ' .. tostring(is_server_running ~= nil))
--- start server, if not already running
-if is_godot_project and not is_server_running then
-    print 'Server not running...Starting server pipe. Please ensure that Godot is running.'
-    vim.fn.serverstart(godot_project_path .. '/server.pipe')
+if is_godot_project then
+    -- check if server is already running in godot project path
+    local is_server_running = vim.uv.fs_stat(godot_project_path .. '/server.pipe')
+    print('is godot server running: ' .. tostring(is_server_running ~= nil))
+    -- start server, if not already running
+    if not is_server_running then
+        print 'Server not running...Starting server pipe. Please ensure that Godot is running.'
+        vim.fn.serverstart(godot_project_path .. '/server.pipe')
+    end
 end
