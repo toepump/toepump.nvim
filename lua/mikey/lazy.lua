@@ -432,7 +432,29 @@ require('lazy').setup({
             --  and try some other statusline plugin
             local statusline = require 'mini.statusline'
             -- set use_icons to true if you have a Nerd Font
-            statusline.setup { use_icons = vim.g.have_nerd_font }
+            statusline.setup {
+                -- Mikey: This was part of Kickstart
+                use_icons = vim.g.have_nerd_font,
+                -- Mikey: This is a custom configuration (w/ ChatGPT help), to make the filename shorter.
+                -- It makes the filename use relative path instead of absolute. Change `%:.` to `%:t` for only filename.
+                content = {
+                    active = function()
+                        local mode, mode_hl = MiniStatusline.section_mode { trunc_width = 120 }
+                        local filename = vim.fn.expand '%:.' -- relative path
+                        local fileinfo = MiniStatusline.section_fileinfo { trunc_width = 120 }
+                        local location = MiniStatusline.section_location { trunc_width = 75 }
+
+                        return MiniStatusline.combine_groups {
+                            { hl = mode_hl, strings = { mode } },
+                            { hl = 'MiniStatuslineFilename', strings = { filename } },
+                            '%<',
+                            '%=', -- ⬅️ this pushes the rest to the right
+                            { hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
+                            { hl = 'MiniStatuslineLocation', strings = { location } },
+                        }
+                    end,
+                },
+            }
 
             -- You can configure sections in the statusline by overriding their
             -- default behavior. For example, here we set the section for
