@@ -16,6 +16,17 @@ return {
 }
 
 -- return {
+--     'shaunsingh/nord.nvim',
+--     name = 'nord',
+--     priority = 1000,
+--     config = function()
+--         vim.g.nord_borders = true
+--         vim.g.nord_enable_sidebar_background = true
+--         vim.cmd.colorscheme 'nord'
+--     end,
+-- }
+
+-- return {
 --     -- You can easily change to a different colorscheme.
 --     -- Change the name of the colorscheme plugin below, and then
 --     -- change the command in the config to whatever the name of that colorscheme is.
