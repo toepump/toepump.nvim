@@ -10,6 +10,9 @@ return {
             filters = {
                 custom = { '*.uid', '*.import' },
             },
+            update_focused_file = {
+                enable = true,
+            },
         }
     end,
 }
