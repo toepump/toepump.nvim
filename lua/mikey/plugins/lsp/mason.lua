@@ -207,6 +207,7 @@ return {
             djlint = {},
             gdtoolkit = {},
             ts_ls = {},
+            tailwindcss = {},
             lua_ls = {
                 -- cmd = { ... },
                 -- filetypes = { ... },
