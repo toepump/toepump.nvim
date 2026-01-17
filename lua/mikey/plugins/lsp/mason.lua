@@ -222,6 +222,9 @@ return {
                     },
                 },
             },
+            glsl_analyzer = {
+                filetypes = { 'glsl', 'gdshader' },
+            },
         }
 
         -- Ensure the servers and tools above are installed

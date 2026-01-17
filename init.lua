@@ -229,6 +229,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
 })
 
+-- help neovim identify filestypes better for LSP purposes
+require 'mikey.filetypes'
+
 -- [[ Configure Lazy.nvim :: See mikey/lazy for full config and comments ]]
 -- Use the lazy.nvim configuration which contains all the lazy installed plugins and their configurations.
 require 'mikey.lazy'
