@@ -204,10 +204,34 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- Custom Keybinds by Mikey
+-- Toggle the NvimTree
 vim.keymap.set('n', '<leader>t', ':NvimTreeToggle<cr>', { noremap = true, silent = true, desc = 'Toggle the file tree' })
+
+-- Show the diagnostic menu popover
 vim.keymap.set('n', '<leader>dd', function()
     return vim.diagnostic.open_float()
 end, { noremap = true, silent = true, desc = 'Show diagnostic in popup' })
+
+-- Project wide search and replace
+vim.api.nvim_create_user_command('Replace', function()
+    local search = vim.fn.input 'Search for: '
+    if search == '' then
+        return
+    end
+    local replace = vim.fn.input('Replace "' .. search .. '" with: ')
+
+    -- Execute across quickfix and handle the "quit" case gracefully
+    local success = pcall(function()
+        vim.cmd('cfdo %s/' .. search .. '/' .. replace .. '/gc | update')
+    end)
+
+    if not success then
+        print 'Substitution aborted or failed.'
+    end
+end, { desc = 'Project-wide search and replace' })
+vim.keymap.set('n', '<leader>spr', ':Replace<CR>', { desc = '[S]earch Project and [R]eplace' })
+
+-- End Customer Keybinds by Mikey
 
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
