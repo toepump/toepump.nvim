@@ -4,5 +4,6 @@
 vim.filetype.add {
     extension = {
         gdshader = 'glsl',
+        save = 'json',
     },
 }
