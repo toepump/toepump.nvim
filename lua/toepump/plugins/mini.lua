@@ -1,3 +1,12 @@
+-- mini.files doesn't have nor will have anyway to respect .ignore per project because the writer believes files exporer should show all files.
+-- so the ignore has to happen here
+local ignore_patterns = {
+    -- godot
+    '%.uid',
+    '%.tscn',
+    '%.import',
+}
+
 return {
     'echasnovski/mini.nvim',
     config = function()
@@ -8,12 +17,22 @@ return {
         require('mini.pairs').setup()
         require('mini.notify').setup()
         require('mini.files').setup {
+            content = {
+                filter = function(fs_entry)
+                    for _, pattern in ipairs(ignore_patterns) do
+                        if fs_entry.name:match(pattern) then
+                            return false
+                        end
+                    end
+                    return true
+                end,
+            },
             -- Customization of explorer windows
             windows = {
                 -- Maximum number of windows to show side by side
                 max_number = math.huge,
                 -- Whether to show preview of file/directory under cursor
-                preview = true,
+                preview = false,
                 -- Width of focused window
                 width_focus = 30,
                 -- Width of non-focused window
