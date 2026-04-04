@@ -1,6 +1,8 @@
 return {
     'echasnovski/mini.nvim',
     config = function()
+        require('mini.icons').setup()
+        require('mini.icons').mock_nvim_web_devicons() -- makes anywhere looking for nvim_web_devicons find mini
         require('mini.ai').setup { n_lines = 500 }
         require('mini.surround').setup()
         require('mini.pairs').setup()
