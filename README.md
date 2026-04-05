@@ -19,7 +19,7 @@ Below is the overall setup of my configuration.
                 - `lazydev.lua` - provides lsp configuration for nvim config specifically (nvim apis) 
                 - `blink.lua` - provides smart autocompletion based on LSP
                 - `lint.lua` - automates linting using linter tools provided via Mason (works with `conform.nvim`)
-                - `nvim-lspconfig.lua` - setsup LSPs via Mason LSP package manager which makes it easy to install/update LSPs and other tools like linters. LSPs are essential as they provide hover hints, go-to commands, etc. and actual semantic understanding of the code base.
+                - `nvim-lspconfig.lua` - sets up LSPs via Mason LSP package manager which makes it easy to install/update LSPs and other tools like linters. LSPs are essential as they provide hover hints, go-to commands, etc. and actual semantic understanding of the code base.
             - `colorscheme.lua` - catppuccin color scheme
             - `git-blame.lua` - shows virtual text for git blame
             - `git-signs.lua` - shows git signs in the gutter
@@ -62,10 +62,6 @@ External Requirements:
 
 > [!TIP]
 > run `:checkhealth` from within `neovim` to see if your environment is missing major dependencies. Errors should be addressed while warnings may often be ignored depending on your use case.
-
-> [!NOTE]
-> See [Install Recipes](#Install-Recipes) for additional Windows and Linux specific notes
-> and quick install snippets
 
 ### Install
 
@@ -115,6 +111,15 @@ That's it! Lazy will install all the plugins you have. Use `:Lazy` to view
 the current plugin status. Hit `q` to close the window.
 
 ### Install Recipes
+
+<details><summary>macos Install Steps</summary>
+
+Note that `gcc` and `make` might already be installed for xcode
+
+```
+brew install gcc make git ripgrep fd unzip neovim
+```
+</details>
 
 <details><summary>Arch Install Steps</summary>
 
