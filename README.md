@@ -43,8 +43,7 @@ Below is the overall setup of my configuration.
 
 ### Install Neovim
 
-Targets *only* the latest
-['stable'](https://github.com/neovim/neovim/releases/tag/stable) neovim.
+This config should work for both `neovim 0.11.x` and `neovim 0.12.x`, but is not guaranteed for older or future versions.
 
 ### Install External Dependencies
 
@@ -60,6 +59,9 @@ External Requirements:
   - If you want to write Typescript, you need `npm`
   - If you want to write Golang, you will need `go`
   - etc.
+
+> [!TIP]
+> run `:checkhealth` from within `neovim` to see if your environment is missing major dependencies. Errors should be addressed while warnings may often be ignored depending on your use case.
 
 > [!NOTE]
 > See [Install Recipes](#Install-Recipes) for additional Windows and Linux specific notes
