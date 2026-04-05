@@ -89,6 +89,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 --: PLUGINS =======================================================================================
 -- help neovim identify filestypes better for LSP purposes
 require 'toepump.filetypes'
+-- Special Godot Checks and Initialization
+require 'toepump.godot'
 -- install plugins with Lazy plugin manager
 require 'toepump.lazy'
 

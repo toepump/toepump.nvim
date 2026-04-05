@@ -18,9 +18,6 @@ end
 -- "This code tells Neovim: “Add lazy.nvim’s directory to the beginning of the runtime path so it loads first.”
 vim.opt.rtp:prepend(lazypath)
 
--- Special Godot Checks and Initialization
-require 'toepump.godot'
-
 -- [[ Configure and install plugins ]]
 --  To check the current status of your plugins, run
 --    :Lazy
