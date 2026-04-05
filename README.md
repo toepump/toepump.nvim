@@ -19,7 +19,7 @@ Below is the overall setup of my configuration.
                 - `lazydev.lua` - provides lsp configuration for nvim config specifically (nvim apis) 
                 - `blink.lua` - provides smart autocompletion based on LSP
                 - `lint.lua` - automates linting using linter tools provided via Mason (works with `conform.nvim`)
-                - `mason.lua` - LSP package manager which makes it easy to install/update LSPs and other tools like linters
+                - `nvim-lspconfig.lua` - setsup LSPs via Mason LSP package manager which makes it easy to install/update LSPs and other tools like linters. LSPs are essential as they provide hover hints, go-to commands, etc. and actual semantic understanding of the code base.
             - `colorscheme.lua` - catppuccin color scheme
             - `git-blame.lua` - shows virtual text for git blame
             - `git-signs.lua` - shows git signs in the gutter
