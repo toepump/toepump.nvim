@@ -41,11 +41,13 @@ Below is the overall setup of my configuration.
 
 ## Installation
 
-### Install Neovim
+### Compataible Neovim Versions
 
 This config should work for both `neovim 0.11.x` and `neovim 0.12.x`, but is not guaranteed for older or future versions.
 
 ### Install External Dependencies
+
+To automatically install these, see [Install Recipes](#install-recipes), then continue from [Install toepump.nvim Configuration](#install-toepumpnvim-configuration)
 
 External Requirements:
 - Basic utils: `git`, `make`, `unzip`, C Compiler (`gcc`)
@@ -60,10 +62,7 @@ External Requirements:
   - If you want to write Golang, you will need `go`
   - etc.
 
-> [!TIP]
-> run `:checkhealth` from within `neovim` to see if your environment is missing major dependencies. Errors should be addressed while warnings may often be ignored depending on your use case.
-
-### Install
+### Install toepump.nvim Configuration
 
 Neovim's configurations are located under the following paths, depending on your OS:
 
@@ -109,6 +108,10 @@ nvim
 
 That's it! Lazy will install all the plugins you have. Use `:Lazy` to view
 the current plugin status. Hit `q` to close the window.
+
+> [!TIP]
+> run `:checkhealth` from within `neovim` to see if your environment is missing major dependencies. Errors should be addressed while warnings may often be ignored depending on your use case.
+
 
 ### Install Recipes
 
