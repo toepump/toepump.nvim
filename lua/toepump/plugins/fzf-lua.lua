@@ -1,7 +1,6 @@
 return {
     'ibhagwan/fzf-lua',
     event = 'VimEnter',
-    dependencies = { 'nvim-mini/mini.icons' },
     config = function()
         local fzf = require 'fzf-lua'
 
