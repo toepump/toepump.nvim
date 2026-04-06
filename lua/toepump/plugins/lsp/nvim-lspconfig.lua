@@ -31,12 +31,12 @@ return {
                 map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
                 map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
                 map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-                map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-                map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-                map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-                map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
-                map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
-                map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
+                map('grr', require('fzf-lua').lsp_references, '[G]oto [R]eferences')
+                map('gri', require('fzf-lua').lsp_implementations, '[G]oto [I]mplementation')
+                map('grd', require('fzf-lua').lsp_definitions, '[G]oto [D]efinition')
+                map('gO', require('fzf-lua').lsp_document_symbols, 'Open Document Symbols')
+                map('gW', require('fzf-lua').lsp_workspace_symbols, 'Open Workspace Symbols')
+                map('grt', require('fzf-lua').lsp_typedefs, '[G]oto [T]ype Definition')
 
                 -- The following two autocommands are used to highlight references of the
                 -- word under your cursor when your cursor rests there for a little while.

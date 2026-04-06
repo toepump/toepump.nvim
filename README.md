@@ -33,7 +33,7 @@ Below is the overall setup of my configuration.
             - `noice.lua` - provides nice GUI for cmdline, notifications, some virtual text, etc
             - `nvim-treesitter.lua` - provides intelligent syntax highlighting and indenting 
             - `package-info.lua` - shows latest npm package virtual text and some shortcuts to manage 
-            - `telescope.lua` - very powerful rip-grep based fuzzy finder with ui and shortcuts
+            - `fzf-lua.lua` - very fast fuzzy finder with a preview ui and shortcuts
             - `which-key` - provides the popup to show contextual shortcuts so you don't have to memorize
         - `lazy.lua` - initalizes `lazy.nvim` and loads plugins from `plugins/` directory
         - `filetypes.lua` - overrides vim's automatic filetype detections to manually mapped filetypes if needed
