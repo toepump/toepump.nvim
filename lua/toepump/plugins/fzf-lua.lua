@@ -7,6 +7,11 @@ return {
         -- 1. Global setting to persist search state/cursor when using "resume"
         fzf.setup {
             resume = true,
+            keymap = {
+                fzf = {
+                    ['ctrl-q'] = 'select-all+accept', -- send to quick fix list for ctrl-q
+                },
+            },
         }
 
         -- fzf_safe: A traffic controller for fzf-lua to prevent winfixbuf (nvim 0.10 feature to lock buffers to windows) crashes.
