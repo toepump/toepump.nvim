@@ -72,6 +72,13 @@ vim.api.nvim_create_user_command('Replace', function()
 end, { desc = 'Project-wide search and replace' })
 vim.keymap.set('n', '<leader>spr', ':Replace<CR>', { desc = '[S]earch Project and [R]eplace' })
 
+-- show what the tree-sitter parser name is for the filetype in the current buffer
+vim.keymap.set('n', '<leader>bp', function()
+    local filetype = vim.bo.filetype
+    local parser = vim.treesitter.language.get_lang(filetype) or filetype
+    vim.notify('TS Context\nFT: ' .. filetype .. '\nParser: ' .. parser, vim.log.levels.INFO)
+end, { desc = 'Get [B]uffer [P]arser name' })
+
 --: BASIC AUTOCOMMANDS ============================================================================
 --  See `:help lua-guide-autocommands`
 
