@@ -43,7 +43,7 @@ Below is the overall setup of my configuration.
 
 ### Compataible Neovim Versions
 
-This config should work for both `neovim 0.11.x` and `neovim 0.12.x`, but is not guaranteed for older or future versions.
+This config only works with `neovim 0.12.x` and is not guaranteed for older versions without tweaks.
 
 ### Install External Dependencies
 
@@ -120,13 +120,13 @@ the current plugin status. Hit `q` to close the window.
 Note that `gcc` and `make` might already be installed for xcode
 
 ```
-brew install gcc make git ripgrep fd unzip neovim
+brew install gcc make git ripgrep fd fzf unzip neovim
 ```
 </details>
 
 <details><summary>Arch Install Steps</summary>
 
 ```
-sudo pacman -S --noconfirm --needed gcc make git ripgrep fd unzip neovim
+sudo pacman -S --noconfirm --needed gcc make git ripgrep fd fzf unzip neovim
 ```
 </details>
