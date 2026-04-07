@@ -21,6 +21,7 @@ Below is the overall setup of my configuration.
                 - `lint.lua` - automates linting using linter tools provided via Mason (works with `conform.nvim`)
                 - `nvim-lspconfig.lua` - sets up LSPs via Mason LSP package manager which makes it easy to install/update LSPs and other tools like linters. LSPs are essential as they provide hover hints, go-to commands, etc. and actual semantic understanding of the code base.
             - `colorscheme.lua` - catppuccin color scheme
+            - `fzf-lua.lua` - very fast fuzzy finder with a preview ui and shortcuts
             - `git-blame.lua` - shows virtual text for git blame
             - `git-signs.lua` - shows git signs in the gutter
             - `mini.lua` - collection of minimal plugins with cohesiave philosphy.
@@ -31,9 +32,10 @@ Below is the overall setup of my configuration.
                 - `mini.files` - file navigator
                 - `mini.statusline` - status line
             - `noice.lua` - provides nice GUI for cmdline, notifications, some virtual text, etc
+            - `nvim-colorizer` - provides color highlighting on color values in editor
             - `nvim-treesitter.lua` - provides intelligent syntax highlighting and indenting 
+            - `nvim-ts-autotag` - provides auto-closing and auto-renaming of html/jsx tags
             - `package-info.lua` - shows latest npm package virtual text and some shortcuts to manage 
-            - `fzf-lua.lua` - very fast fuzzy finder with a preview ui and shortcuts
             - `which-key` - provides the popup to show contextual shortcuts so you don't have to memorize
         - `lazy.lua` - initalizes `lazy.nvim` and loads plugins from `plugins/` directory
         - `filetypes.lua` - overrides vim's automatic filetype detections to manually mapped filetypes if needed
