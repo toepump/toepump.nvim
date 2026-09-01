@@ -21,7 +21,9 @@ Below is the overall setup of my configuration.
                 - `lint.lua` - automates linting using linter tools provided via Mason (works with `conform.nvim`)
                 - `nvim-lspconfig.lua` - sets up LSPs via Mason LSP package manager which makes it easy to install/update LSPs and other tools like linters. LSPs are essential as they provide hover hints, go-to commands, etc. and actual semantic understanding of the code base.
             - `colorscheme.lua` - catppuccin color scheme
-            - `fzf-lua.lua` - very fast fuzzy finder with a preview ui and shortcuts
+            - `snacks.lua` - collection of quality-of-life plugins by folke
+                - `snacks.picker` - a very fast fuzzy-finder for files, patterns, and lsp-based searches
+                - `snacks.explorer` - an intuitive file explorer tree
             - `git-blame.lua` - shows virtual text for git blame
             - `git-signs.lua` - shows git signs in the gutter
             - `mini.lua` - collection of minimal plugins with cohesiave philosphy.
