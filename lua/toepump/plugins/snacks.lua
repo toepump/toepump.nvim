@@ -18,6 +18,7 @@ return {
             enabled = true,
             replace_netrw = true, -- This is the default, but good to be explicit
         },
+        scroll = {},
         zen = {},
     },
     config = function(_, opts)
