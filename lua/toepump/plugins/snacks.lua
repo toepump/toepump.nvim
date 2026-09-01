@@ -18,6 +18,7 @@ return {
             enabled = true,
             replace_netrw = true, -- This is the default, but good to be explicit
         },
+        zen = {},
     },
     config = function(_, opts)
         require('snacks').setup(opts)
@@ -28,10 +29,9 @@ return {
             Snacks.explorer()
         end, { desc = '[T]oggle Snacks Explorer' })
 
-        -- Optional: Map a key to open explorer revealing the current file
-        vim.keymap.set('n', '<leader>e', function()
-            Snacks.explorer { reveal = true }
-        end, { desc = 'Reveal file in [e]xplorer' })
+        vim.keymap.set('n', '<leader>z', function()
+            Snacks.zen()
+        end, { desc = 'Toggle Zen Mode' })
 
         local function wrap_function(action)
             return function()
