@@ -11,6 +11,9 @@ return {
                 typescriptreact = { 'eslint_d' },
                 javascript = { 'eslint_d' },
                 javascriptreact = { 'eslint_d' },
+                -- stylelint needs a .stylelintrc / stylelint.config.js in the project or it errors
+                css = { 'stylelint' },
+                scss = { 'stylelint' },
             }
 
             -- Create autocommand which carries out the actual linting

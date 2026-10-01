@@ -5,6 +5,16 @@ return {
     opts = {
         picker = {
             enabled = true,
+            sources = {
+                explorer = {
+                    -- exclude .uid files (Godot)
+                    exclude = { '*.uid', '**/*.uid' },
+                },
+                files = {
+                    -- exclude .uid files (Godot)
+                    exclude = { '*.uid', '**/*.uid' },
+                },
+            },
             win = {
                 input = {
                     keys = {
@@ -19,7 +29,15 @@ return {
             replace_netrw = true, -- This is the default, but good to be explicit
         },
         scroll = {},
-        zen = {},
+        zen = {
+            toggles = {
+                dim = false,
+                git_signs = true,
+                mini_diff_signs = true,
+                diagnostics = true,
+                -- inlay_hints = false,
+            },
+        },
     },
     config = function(_, opts)
         require('snacks').setup(opts)

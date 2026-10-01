@@ -110,11 +110,8 @@ return {
             },
         }
 
-        -- LSP servers and clients are able to communicate to each other what features they support.
-        --  By default, Neovim doesn't support everything that is in the LSP specification.
-        --  When you add blink.cmp, luasnip, etc. Neovim now has *more* capabilities.
-        --  So, we create new capabilities with blink.cmp, and then broadcast that to the servers.
-        local capabilities = require('blink.cmp').get_lsp_capabilities()
+        -- NOTE: blink.cmp capabilities don't need to be set here. On nvim 0.11+ blink.cmp registers them
+        -- for every server itself via vim.lsp.config('*', ...) (see blink.cmp/plugin/blink-cmp.lua)
 
         -- Enable the following language servers
         --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -132,8 +129,6 @@ return {
             --    https://github.com/pmizio/typescript-tools.nvim
             --
             -- But for many setups, the LSP (`ts_ls`) will work just fine
-            djlint = {},
-            gdtoolkit = {},
             ts_ls = {},
             tailwindcss = {},
             lua_ls = {
@@ -154,6 +149,16 @@ return {
                 filetypes = { 'glsl', 'gdshader' },
             },
             jsonls = {},
+            -- css, scss, less
+            cssls = {
+                -- ignore unknown at-rules so tailwind's @tailwind / @apply / @layer don't get flagged
+                settings = {
+                    css = { validate = true, lint = { unknownAtRules = 'ignore' } },
+                    scss = { validate = true, lint = { unknownAtRules = 'ignore' } },
+                    less = { validate = true, lint = { unknownAtRules = 'ignore' } },
+                },
+            },
+            somesass_ls = {}, -- scss + indented .sass (cross-file @use/@import, mixins, variables)
         }
 
         -- Ensure the servers and tools above are installed
@@ -172,23 +177,24 @@ return {
         local ensure_installed = vim.tbl_keys(servers or {})
         vim.list_extend(ensure_installed, {
             'stylua', -- Used to format Lua code
+            'prettierd', -- Used to format js/ts/css/scss
+            'stylelint', -- Used to lint css/scss
+            'djlint', -- Used to format html
+            'gdtoolkit', -- Provides gdformat and gdlint for gdscript
         })
         require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
+        -- Apply the overrides from the servers table above. This has to happen before mason-lspconfig.setup,
+        -- since that's what calls vim.lsp.enable() on each installed server (mason-lspconfig v2 `automatic_enable`).
+        -- Anything not set here falls back to nvim-lspconfig's defaults for that server.
+        for name, config in pairs(servers) do
+            if next(config) then
+                vim.lsp.config(name, config)
+            end
+        end
+
         require('mason-lspconfig').setup {
             ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
-            automatic_installation = false,
-            handlers = {
-                function(server_name)
-                    local server = servers[server_name] or {}
-                    print(server_name)
-                    -- This handles overriding only values explicitly passed
-                    -- by the server configuration above. Useful when disabling
-                    -- certain features of an LSP (for example, turning off formatting for ts_ls)
-                    server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-                    require('lspconfig')[server_name].setup(server)
-                end,
-            },
         }
 
         -- special case for gdscript LSP using nvim native config/enable rather than the above mason-lspconfig

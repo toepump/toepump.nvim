@@ -25,6 +25,8 @@ return { -- Highlight, edit, and navigate code
             'tsx',
             'javascript',
             'json',
+            'css',
+            'scss',
         }
 
         -- Filetypes to start the above parsers for (these may not match the parsers, but most of the time do. To be sure... again, run <leader>bp in the file in question)
@@ -45,6 +47,9 @@ return { -- Highlight, edit, and navigate code
                 'javascript',
                 'typescriptreact',
                 'json',
+                'css',
+                'scss',
+                -- no 'sass' here: there is no treesitter parser for it, vim's built-in sass syntax handles highlighting
             },
             callback = function()
                 -- syntax highlighting, provided by Neovim
