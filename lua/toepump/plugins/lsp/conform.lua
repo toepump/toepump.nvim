@@ -31,6 +31,7 @@ return { -- Autoformat
         formatters_by_ft = {
             lua = { 'stylua' },
             gdscript = { 'gdformat' },
+            gdshader = { 'gdshader_clang_format' }, -- also covers .gdshaderinc (see toepump/filetypes.lua)
             html = { 'djlint' },
             -- You can use 'stop_after_first' to run the first available formatter from the list
             javascript = { 'prettierd', 'prettier', stop_after_first = true },
@@ -40,6 +41,19 @@ return { -- Autoformat
             css = { 'prettierd', 'prettier', stop_after_first = true },
             scss = { 'prettierd', 'prettier', stop_after_first = true },
             less = { 'prettierd', 'prettier', stop_after_first = true },
+        },
+        formatters = {
+            -- There's no dedicated Godot shader formatter, and glsl_analyzer's LSP formatting mangles
+            -- uniform hints (e.g. `hint_range(0.0, 1.0)= 1.0 ;`). clang-format in GLSL mode handles
+            -- Godot shader syntax fine; the style below follows Godot's conventions (tabs, K&R braces).
+            gdshader_clang_format = {
+                command = 'clang-format',
+                args = {
+                    '--assume-filename=shader.glsl',
+                    '--style={BasedOnStyle: LLVM, IndentWidth: 4, TabWidth: 4, UseTab: ForIndentation, ColumnLimit: 0, AllowShortFunctionsOnASingleLine: Inline, AllowShortIfStatementsOnASingleLine: Never, AllowShortBlocksOnASingleLine: Never, SortIncludes: Never}',
+                },
+                stdin = true,
+            },
         },
     },
 }

@@ -22,6 +22,7 @@ return { -- Highlight, edit, and navigate code
             'vim',
             'vimdoc',
             'gdscript',
+            'gdshader',
             'tsx',
             'javascript',
             'json',
@@ -44,6 +45,7 @@ return { -- Highlight, edit, and navigate code
                 'vim',
                 'vimdoc',
                 'gdscript',
+                'gdshader', -- + gdshaderinc (mapped to gdshader in toepump/filetypes.lua)
                 'javascript',
                 'typescriptreact',
                 'json',

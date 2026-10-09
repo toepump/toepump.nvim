@@ -181,6 +181,7 @@ return {
             'stylelint', -- Used to lint css/scss
             'djlint', -- Used to format html
             'gdtoolkit', -- Provides gdformat and gdlint for gdscript
+            'clang-format', -- Used to format gdshader
         })
         require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
